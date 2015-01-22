@@ -96,8 +96,8 @@ func (h *Host) GenerateCertificates() error {
 		return err
 	}
 
-	caCertPath := filepath.Join(h.storePath, "ca.pem")
-	privateKeyPath := filepath.Join(h.storePath, "private.pem")
+	caCertPath := filepath.Join(filepath.Dir(h.storePath), "ca.pem")
+	privateKeyPath := filepath.Join(filepath.Dir(h.storePath), "ca-key.pem")
 
 	if _, err := os.Stat(h.CaCertPath); os.IsNotExist(err) {
 		caPathExists = false
@@ -157,7 +157,7 @@ func (h *Host) ConfigureAuth() error {
 	}
 
 	serverCertPath := filepath.Join(h.storePath, "server.pem")
-	caCertPath := filepath.Join(h.storePath, "ca.pem")
+	caCertPath := filepath.Join(filepath.Dir(h.storePath), "ca.pem")
 	serverKeyPath := filepath.Join(h.storePath, "server-key.pem")
 
 	if err := d.StopDocker(); err != nil {

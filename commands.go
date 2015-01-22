@@ -222,7 +222,7 @@ func cmdConfig(c *cli.Context) {
 	}
 
 	storeDir := store.Path
-	caCert := filepath.Join(storeDir, name, "ca.pem")
+	caCert := filepath.Join(storeDir, "ca.pem")
 	clientCert := filepath.Join(storeDir, name, "cert.pem")
 	clientKey := filepath.Join(storeDir, name, "key.pem")
 	machineUrl, err := host.GetURL()
